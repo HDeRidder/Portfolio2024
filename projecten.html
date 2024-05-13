@@ -3,79 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Projecten / Realisaties</title>
-    <style>
-        /* Voeg hier je eigen CSS-stijlen toe voor de vormgeving */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav {
-            background-color: #f4f4f4;
-            padding: 10px 0;
-            text-align: center;
-        }
-        nav ul {
-            list-style-type: none;
-            margin: 0;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .project {
-            margin-bottom: 30px;
-            border-bottom: 1px solid #ccc;
-            padding-bottom: 20px;
-        }
-        .project h2 {
-            margin-top: 0;
-        }
-    </style>
+    
 </head>
 <body>
     <header>
         <h1>Projecten / Realisaties</h1>
     </header>
-    <nav>
+    <nav class="navbar">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="over-mij.html">Over Mij</a></li>
-            <li><a href="projecten.html">Projecten / Realisaties</a></li>
+            <li><a href="projecten.html">Projecten</a></li>
         </ul>
     </nav>
     <div class="container">
-        <div class="project">
-            <h2>Requirements Analysis / Systems Engineering & Analysis</h2>
-            <p>Context en achtergrond van het project...</p>
-            <p>Wat heb je concreet gerealiseerd in dit project...</p>
-            <p>Wat heb je geleerd uit deze realisatie...</p>
-            <!-- Voeg eventueel beeldmateriaal toe -->
-        </div>
-        <div class="project">
-            <h2>Ander Project</h2>
-            <p>Context en achtergrond van het project...</p>
-            <p>Wat heb je concreet gerealiseerd in dit project...</p>
-            <p>Wat heb je geleerd uit deze realisatie...</p>
-            <!-- Voeg eventueel beeldmateriaal toe -->
-        </div>
+        <div class="project-container">
+            <article class="project">
+                <img src="RA.jpg" alt="Project Requirements Analysis">
+                <h1>Project Requirements Analysis</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <a href="project1.html" class="read-more">Lees meer</a>
+                
+            </article>
+        <div class="project-container">
+        <div class="project-container">
+            <article class="project">
+                <img src="minifig.jpg" alt="Project Minifig">
+                <h1>Minifig sorting</h1>
+                <p>Trainen van een AI-model om lego minifigures te herkennen op de beurs van Bricks & More</p>
+                <a href="projectminifig.html" class="read-more">Lees meer</a>
+            </article>
+            <div class="project-container">
+                <article class="project">
+                    <img src="iot.png" alt="Project IOT">
+                    <h1>Project IOT</h1>
+                    <p>Het automatiseren van een pompoenserre</p>
+                    <a href="projectiot.html" class="read-more">Lees meer</a>
+                </article>
+            <div class="project-container">
+                <article class="project">
+                    <img src="project1.jpg" alt="Project 1">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="project1.html" class="read-more">Lees meer</a>
+                </article>
+            <div class="project-container">
+                <article class="project">
+                    <img src="project1.jpg" alt="Project 1">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    <a href="project1.html" class="read-more">Lees meer</a>
+                </article>
     </div>
 </body>
 </html>

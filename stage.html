@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Air Filtration Control System</h1>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="over-mij.html">Over mij</a></li>
+            <li><a href="projecten.html">Projecten</a></li>
+            <li><a href="stage.html">Stage</a></li>
+        </ul>
+    </nav>
+    <div class="project-details">
+        <section>
+            <h2>Context & Achtergrond</h2>
+            <p>Mijn stage vond plaats bij CERcuits, een startup gelegen in de innovatiecampus te Geel, dat zich specialiseert in het maken van keramische PCB's. <br>
+                PCB is de afkorting voor "Printed Circuit Board". Dit is meestal een relatief dun plaatje bestaand uit een isolerend materiaal zoals glasvezel of in dit geval een keramisch materiaal.
+                Op het oppervlak zie je meestal een laag koper in de vorm van lijntjes of "baantjes" die dienen om de erop gesoldeerde componenten met elkaar te verbinden. 
+                Een PCB kan zeer eenvoudig zijn, bijvoorbeeld om een batterijpercentage te meten en weer te geven. Het kan ook een stuk complexer zijn en dienst doen als moederbord ter aansturing van een laptop. Een keramische PCB ziet er alsvolgt uit:
+                <br><br><img src="Ceramic-PCB-with-SMT-1.jpg" alt="ceramic PCB"><br>
+                Ik kwam voor het eerst in contact met dit bedrijf tijdens één van onze lessen "Embedded Devices Essentials" in het tweede jaar van mijn bacheloropleiding.
+                Op dat moment waren we bezig met een project waarbij we een weerballon aan het ontwikkelen waren die ook nog eens dienst moest doen als noodnetwerk voor in rampgebieden. 
+                Het idee was om een eigen PCB (printplaat) te ontwerpen die gegevens zou verzamelen over de omgeving alsook LORA (LOng RAnge) en Wifi aan boord zou hebben. 
+                Aangezien de heren van CERcuits hier dag in dag uit mee bezig waren leek het onze prof dan ook interessant om eens mensen uit het vakgebied aan het woord te horen.
+                <br><br>Die lezing was mij bijgebleven en dat is ook de reden waarom ik uiteindelijk op een dag in het tweede semester van mijn laatste jaar ben gaan aankloppen bij hen. 
+                Ik werd onmiddelijk enthousiast onthaald door mijn stagementor, Ruben Mangelschots, legde uit hoe ik bij hen terechtkwam en kreeg meteen een rondleiding. 
+                Niet veel later kreeg ik ook groen licht van het bedrijf dat ik bij hen aan de slag zou kunnen gaan. Mijn opdracht bestond eruit een systeem te ontwikkelen dat het stofafzuigsysteem dat reeds aanwezig was, te gaan monitoren en te automatiseren.
+                <br><br>
+                <img src="lasers.jpg" alt="3 lasers op een rij">
+                <br>Bij het maken van PCB's worden lasers gebruikt om de gewenste vorm van de printplaat uit te snijden, boorgaten te voorzien of overtollig koper te verwijderen.
+                Bij dit proces komen heel wat kleine stofdeeltjes vrij, en om te vermijden dat deze overal in de lucht rondvliegen, alsook niet ophopen ergens in of op de laser, werd een stofafzuigsysteem geïnstalleerd.
+                Hiervoor werd een speciale afzuigkap gemaakt met behulp van een 3D-printer. De stofdeeltjes worden dus opgezogen aan de laserzijde en komen uiteindelijk in een filterzak terecht.
+                <br>
+                <br>
+                <img src="blower.jpg" alt="blower met filterzak">
+                <br>
+                Op dit moment staan er in 1 ruimte 4 blowers van elk 600W die quasi permanent opstaan. De bestaande systemen werken al, maar kennen enkele nadelen:
+                <ol>
+                    <li>Deze blowers maken veel lawaai, waardoor langdurig werken in deze ruimte onaangenaam is voor de werknemers.</li>
+                    <li>Elk systeem produceert veel warmte, wat voor hoge temperaturen zorgt in de ruimte en dus ook niet echt gewenst is, zeker niet in de zomer.</li>
+                    <li>Het gezamenlijke energieverbruik en de daarbij horende kost zijn relatief hoog, doordat de blowers vaak dag en nacht aan staan. </li>
+                </ol>
+                Dit kan dus beter, dacht men bij CERcuits. Toeval wou dat ik toen net kwam binnenvallen, en zeg nu zelf; wie is er beter om zoiets uit te zoeken en te maken dan een leergierige stagestudent?
+                Hoe is dit in zijn werk gegaan? Ik gids jullie door het proces!</p>
+        </section>
+        <section>
+            <h2>Realisatie</h2>
+            <br>
+            <img src="AFCS.jpg" alt="afcs">
+            <br>
+            <p>Zoals bij de meeste projecten het geval is startte ik met heel wat onderzoek. Eerst en vooral ging ik samen met mijn stagementor kijken wat het beoogde systeem allemaal moest bevatten wat betreft functionaliteiten, bediening, componenten, ...
+                Na wat overleg werd het duidelijk wat de bedoeling was. 
+                Het zogenaamde "Air Filtration Control System" moest, in grote lijnen: <br><br>
+                <ol>
+                    <li>Detecteren wanneer een laser werd opgezet en met een bewerking bezig was.</li>
+                    <li>De blower die zorgde voor de afzuiging automatisch opzetten indien de laser actief was.</li>
+                    <li>De blower automatisch afzetten wanneer alle aangesloten lasers voor minstens 15 minuten inactief waren</li>
+                    <li>De status van de aan de blower gekoppelde filterzakken monitoren en aangeven wanneer deze volzat en dus vervangen moest worden.</li>
+                </ol>
+                
+                Als brein voor deze hele operatie opteerde ik voor de ESP32, een microcontroller die zeer populair is bij zowat elke elektronicus en waar ik zelf al ervaring mee had. 
+                Daarnaast is het ook een stuk goedkoper dan de iets bekendere Arduino. 
+                Om de laserstatus te detecteren werd geopteerd om een pin uit te lezen op het M4-bord, een PCB die diende voor de aansturing van de laser. Deze pin werd namelijk van 0 naar 24V gebracht bij actieve status.
+                Probleem hierbij is wel dat je geen 24V kan gaan meten met een ESP32, die werkt slechts op 3.3V. Om dit probleem te verhelpen besloot ik een optocoupler te gebruiken om beide kringen van elkaar te scheiden.
+                Voor het inschakelen van de lampen en de blower maakte ik gebruik van Relaisbordjes. Dit zijn schakelaars vergelijkbaar met een schakelaar om het licht aan te doen, met het verschil dat deze kunnen worden aangestuurd door een ESP32.
+                De Relaisbordjes konden een stroomkring van 24 Volt (gelijkstroom) schakelen, maar de blower had helaas net iets meer nodig. Deze werkte op 230 Volt (wisselstroom). Om deze dus te kunnen opzetten diende ik de overstap van 24V naar 230V nog te maken.
+                Hiervoor koos ik een contactor van Siemens, een soort van grote broer van de relais-schakelaar die grotere vermogens kon schakelen. Hieronder zie je enkele schema's ter verduidelijking:
+                <br><br>
+                <img src="schema1" alt="schema 1">
+                <br><br>
+                <img src="schema2" alt="schema 2">
+                <br><br>
+                <img src="schema3" alt="schema 3">
+                <br><br>
+                
+
+                Naast al deze zaken moest er ook de nodige signalisatie voorzien worden. Zo was het essentieel dat een 3-kleurige lamp met ingebouwde zoemer verschillende statussen aangaf. 
+                Wanneer de blower werd aangezet of agezet, begon een rode lamp te knipperen terwijl er een geluid werd afgespeeld om werknemers in de buurt te waarschuwen. Wanneer de filterzak vol was, begon er een gele lamp te pinken, en ga zo maar door.
+
+                <br><br>
+
+            </p>
+        </section>
+        <section>
+            <h2>Wat heb ik geleerd?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at aliquam leo. Integer malesuada odio eu felis malesuada, sit amet volutpat purus tincidunt.</p>
+        </section>
+    </div>
+    <footer>
+        <div>
+            <h3 class="text-4xl text-secondary">Contact</h3>
+            <p class="text-neutral">Harold De Ridder<br><a href="tel:+32 14 74 04 97">+32 483112061</a><br><a
+                    href="mailto:de.ridder.harold@gmail.com">de.ridder.harold@gmail.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>

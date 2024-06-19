@@ -74,6 +74,44 @@ footer p {
 
 .mycontainer {
     padding-top: 2rem;
-    padding-left: 9rem;
-    padding-right: 9rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+}
+
+.montserrat-body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card-img-top {
+    height: 200px; /* Set a fixed height for the images */
+    width: auto; /* Maintain the aspect ratio */
+    object-fit: contain; /* Ensure the image covers the entire area */
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%; /* Make the card body take the full height of the card */
+    padding: 1rem;
+}
+
+.card-body h5 {
+    margin-top: auto; /* Push the title to the bottom of the card body */
+    margin-bottom: 0.5rem; /* Add some space below the title */
+}
+
+.card-body p {
+    margin-top: 0.5rem; /* Add some space above the text */
+}
+
+.card-footer {
+    text-align: center; /* Center align the button */
+}
+
+.card {
+    height: 100%; /* Ensure all cards have the same height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

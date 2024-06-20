@@ -60,7 +60,7 @@
         <div>
             <p>Mijn stage vond plaats bij CERcuits, een startup gelegen in de innovatiecampus te Geel, dat zich specialiseert in het maken van keramische PCB's. <br>
                 PCB is de afkorting voor "Printed Circuit Board". Dit is meestal een relatief dun plaatje bestaand uit een isolerend materiaal zoals glasvezel of in dit geval een keramisch materiaal.
-                Keramische PCB's zijn erom gekend veel beter bestand tegen extreme hitte of enorm koude temperaturen, waardoor ze een heel specifiek toepassingsgebied hebben.
+                Keramische PCB's zijn erom gekend veel beter bestand te zijn tegen extreme hitte of enorm koude temperaturen, waardoor ze een heel specifiek toepassingsgebied hebben.
                 Op het oppervlak zie je meestal een laag koper in de vorm van lijntjes of "baantjes" die dienen om de erop gesoldeerde componenten met elkaar te verbinden. 
                 Een PCB kan zeer eenvoudig zijn, bijvoorbeeld om een batterijpercentage te meten en weer te geven. Het kan ook een stuk complexer zijn en dienst doen als moederbord ter aansturing van een laptop. Een voorbeeld van een keramische PCB zie je hier rechtsboven.
             </p>
@@ -113,12 +113,12 @@
                             <li>Detecteren wanneer een laser werd opgezet en met een bewerking bezig was.</li>
                             <li>De blower die zorgde voor de afzuiging automatisch opzetten indien de laser actief was.</li>
                             <li>De blower automatisch afzetten wanneer alle aangesloten lasers voor minstens 15 minuten inactief waren</li>
-                            <li>De status van de aan de blower gekoppelde filterzakken monitoren en aangeven wanneer deze volzat en dus vervangen moest worden.</li>
+                            <li>De status van de aan de blower gekoppelde filterzakken monitoren, aangeven wanneer deze volzaten en dus vervangen moesten worden.</li>
                         </ol>
                         <br><br><br><br>
                         Als brein voor deze hele operatie opteerde ik voor de ESP32, een microcontroller die zeer populair is bij zowat elke elektronicus en waar ik zelf al ervaring mee had. 
                         Daarnaast is het ook een stuk goedkoper dan de iets bekendere Arduino. 
-                        Om de laserstatus te detecteren werd geopteerd om een pin uit te lezen op het M4-bord, een PCB die diende voor de aansturing van de laser. Deze pin werd namelijk van 0 naar 24V gebracht bij actieve status.
+                        Om de laserstatus te detecteren werd besloten om een pin uit te lezen op het M4-bord, een PCB die diende voor de aansturing van de laser. Deze pin werd namelijk van 0 naar 24V gebracht bij actieve status.
                         Probleem hierbij is wel dat je geen 24V kan gaan meten met een ESP32, die werkt slechts op 3.3V. Om dit probleem te verhelpen besloot ik een optocoupler te gebruiken om beide kringen van elkaar te scheiden.
                         <br><br>Voor het inschakelen van de lampen en de blower maakte ik gebruik van Relaisbordjes. Dit zijn schakelaars vergelijkbaar met een schakelaar om het licht aan te doen, met het verschil dat deze kunnen worden aangestuurd door een ESP32.
                         De Relaisbordjes konden een stroomkring van 24 Volt (gelijkstroom) schakelen, maar de blower had helaas net iets meer nodig. Deze werkte op 230 Volt (wisselstroom). Om deze dus te kunnen opzetten diende ik de overstap van 24V naar 230V nog te maken.

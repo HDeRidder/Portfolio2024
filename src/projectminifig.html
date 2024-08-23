@@ -39,15 +39,50 @@
     <div class="project-details">
       <section>
         <h2>Context & Achtergrond</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at aliquam leo. Integer malesuada odio eu felis malesuada, sit amet volutpat purus tincidunt.</p>
+        <p>Voor het vak Digital Innovation kregen we de opdracht om een robotarm te programmeren voor op de Legobeurs genaamd 'Bricks and More'. Deze beurs gaat jaarlijks 
+          door op de campus van Thomas More te Geel. Het lokt heel wat hobbyisten maar ook heel veel kinderen. Die laatste groep zou onze doelgroep worden.
+          <br><br>
+          De opdracht:
+          <br><br> 
+          Zorg ervoor dat kinderen op de legobeurs mannetjes kunnen maken en deze kunnen laten triëren door een robotarm. Bedoeling is dat de robotarm zal proberen om het gemaakte
+          mannetje in 1 van 4 categorieën onder te verdelen.
+          <br><br>
+          De 4 categorieën waren:
+          <ul>
+            <li>Ruimte</li>
+            <li>Ridders</li>
+            <li>Piraten</li>
+            <li>Hulpdiensten</li>
+          </ul>
+        </p>
       </section>
       <section>
         <h2>Realisatie</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at aliquam leo. Integer malesuada odio eu felis malesuada, sit amet volutpat purus tincidunt.</p>
+        <p>Om dit te realiseren maakten we gebruik van Teachable Machines. Dit is een voorgetraind AI-model van Google dat je kan gebruiken dinge te herkennen.
+          Deze dingen kunnen beelden, geluiden of lichaamshoudingen zijn. Wij kozen voor beelden en begonnen duizenden fotos te nemen van honderden verschillende zelfgebouwde mannetjes die telkens hoorden bij één categorie.
+          Op basis van deze input leerden we het AI-model minifigures van elkaar onderscheiden.
+          <br><br>
+          Vervolgens gingen we aan de slag met de Cobot. Een cobot is een robot die zo ontworpen is dat er nagenoeg geen riscio's aan verbonden zijn om deze te gebruiken in de buurt van mensen. 
+          Als de robot met een beweging bezig is en ergens (al is het maar zachtjes) tegenbotst, dan blokkeert deze onmiddelijk om te vermijden dat er ongelukken van komen. We programmeerden met de wizard op de bijbehorende tablet 4 verschillende scenario's die de robotarm voorgeschoteld kon krijgen. 
+          Elk scenario was een pad dat deze robotarm zou volgen, telkens te beginnen bij het opnemen van het mannetje, vervolgens een leuke slingerbeweging te maken om tot slot het mannetje op 1 van de 4 plekken neer te zetten.
+          <br><br>
+          Tot slot koppelden we een webcam aan een Raspberry Pi. De webcam diende om een foto te nemen van het gemaakte mannetje. De Raspberry Pi was op zijn beurt verbonden met een relaisbord dat ingangen van de Cobot schakelde. De flow was als volgt:
+          <ol>
+            <li>De webcam nam een foto die werd opgeslagen op de Raspberry Pi</li>
+            <li>De foto werd doorgestuurd naar een online AI-model via de Raspberry Pi</li>
+            <li>Het AI-model probeerde de foto in een categorie te plaatsen en stuurde die categorie door naar de Raspberry Pi</li>
+            <li>De raspberry pi schakelde op basis van het teruggekregen resultaat 1 van de 4 relais</li>
+            <li>De robot voerde het bijhorende voorgeprogrammeerde scenario uit en zette (hopelijk) het mannetje op de juiste plek</li>
+          </ol>
       </section>
       <section>
         <h2>Wat heb ik geleerd?</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at aliquam leo. Integer malesuada odio eu felis malesuada, sit amet volutpat purus tincidunt.</p>
+        <p><ul>
+          <li>Werken met Teachable Machine, een voorgetrainde AI van Google</li>
+          <li>Programmeren van een Cobot</li>
+          <li>Python kennis bijgeschaafd</li>
+          <li>Combinatie Raspberry Pi en Robotica</li>
+        </ul></p>
       </section>
     </div>
   </main>

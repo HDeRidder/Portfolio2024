@@ -39,15 +39,63 @@
     <div class="project-details">
       <section>
         <h2>Context & Achtergrond</h2>
-        <p>Les Embedded Devices Essentials</p>
+        <p>Dit was een project dat ik samen met 2 medestudenten, Mathieu Du Jardin en Jens Geenen, uitvoerde voor het vak Embedded Devices Essentials. Vooraleer we hiermee van start gingen hadden 
+          we al heel wat uitleg gekregen over de ESP32-microcontroller, wat hier allemaal ingebouwd zat en hoe we hier in C programma's voor konden schrijven. Na deze lessen was het aan 
+          ons! We kregen een aantal projecten voorgeschoteld en na overleg besloten we om het volgende project voor onze rekening te nemen:
+          <br>
+          <h3>Project Weatherballoon & Backup Network</h3>
+          <br>
+          <p>"Ontwerp een weerballon met meetapparatuur die ook dienst kan doen als node in een mesh network."</p> 
+            <br>
+            Naast omgevingsvariabelen meten en doorsturen naar een database, moet elke weerballon ook Wi-Fi en LORA aan boord hebben. LORA is de afkorting voor LOng RAnge en is zowat het grotere broertje van Wi-Fi, aangezien het hier ook over draadloze communicatietechnologie gaat, maar dan over een vele grotere afstand (honderden tot zelfs enkele kilometers indien er geen obstakels tussen zitten). 
+            <br><br>
+            Bij aanvang van het project waren wij naar goede gewoonte op zoek naar een leukere naam om dit project te benoemen, en na wat te spelen met ChatGPT (ere wie ere toekomt), kwam de naam "LORA The Explorer" uit de bus. Enorm toepasselijk voor een weerballon die op 'onderzoek gaat' in de lucht en tegelijkertijd hilarisch. Ideaal dus.
+            <br><br>De bedoeling was om in rampgebieden waar de (netwerk)infrastructuur beschadigd was x aantal weerballonnen de lucht in te laten. Vervolgens konden gebruikers verbinding maken met één van deze weerballonnen via Wi-fi.
+             De afstand van de grond tot een ballon zou enkele tientallen meters zijn (afhankelijk van de hoogte van de omringende gebouwen, bomen, ...). Perfect mogelijk voor Wi-Fi dus! De weerballonnen 
+             onderling zouden dan weer met elkaar in verbinding staan d.m.v. LORA. Op die manier zou je slechts nood hebben aan een handvol ballonnen om een heel dorp of zelfs een kleine stad te kunnen coveren. 
+            <br><br>
+            Het uiteindelijke doel van deze ballonnen was dus om een noodnetwerk op te zetten waar hulpverleners of overlevenden gebruik van konden maken om lokaal met elkaar te communiceren voor het geval andere standaardcommunicatie niet meer mogelijk is.
+            Daarnaast kan er ook lokaal info geraadpleegd worden wat betreft de luchtkwaliteit na een natuurramp of bombardement bijvoorbeeld.  
+          </p>
       </section>
       <section>
         <h2>Realisatie</h2>
-        <p>Coveren van een groot deel van de campus met een tiental ESP32-controllers.</p>
+        <img src="" alt="">
+        <p>Wij waren alledrie razend enthousiast om aan dit project te beginnen, vooral omdat we het gevoel hadden dat we hiermee echt een impact zouden kunnen hebben op de wereld als we zouden slagen in dit project.
+          We begonnen dus vol goede moed vanalles op te zoeken over LORA communicatie, over Mesh networks, weerballonnen en noem maar op.
+          De opdracht bestond er ook uit een eigen PCB/printplaat te ontwerpen en dus niet gewoon alles apart te kopen en te solderen. Daarnaast had hij ons ook aangemoedigd om de ESP32-module eens volledig van 0 te proberen ontwerpen. 
+          Dit zou een goede oefening zijn die ons overigens ook nog eens heel wat extra punten kon opleveren als we hierin slaagden. Hiervoor deden we beroep op EasyEDA, gratis online software om elektrische schema's te tekenen en de overeenkomstige PCB vervolgens te kunnen bestellen.
+          <br><br>
+          Al snel bleek dat een eigen microcontroller 'from scratch' bouwen en daar dan ook nog eens alle nodige extra elektronica aan te koppelen niet zo eenvoudig was. Zelfs al hadden we de datasheets van Espressif (fabrikant van ESP32-chips) ter beschikking,
+          we mochten geen fouten maken. Één klein foutje kon ervoor zorgen dat onze PCB niet werkte of er zelfs gewoon iets stuk ging nog voor we er iets mee hadden kunnen doen. Doordat we zo lang bezig waren aan het ontwerpen van de PCB, hebben we last minute de ESP32-chip die op het ontwerp stond 
+          nog moeten vervangen door (volgens ons) dezelfde versie van de chip, maar van een andere fabrikant. Niets bleek minder waar...
+          <br><br>
+          De PCB die wij toegestuurd kregen zag er op het eerste zicht heel goed uit, maar ons gevoel van vreugde maakte al snel plaats voor een gevoel van ergernis. De ESP32 chip die op ons ontwerp zat, kregen we maar niet aan de praat.  Achteraf bleek dat we een chip hadden besteld
+          die al uit productie was. Als resultaat hiervan kregen we deze maar niet geprogrammeerd. Na ons probleem op Facebook gepost te hebben kregen we hulp uit onverwachte hoek. Roma, iemand uit Georgië heeft - nadat wij er al meer dan een week mee aan het knoeien waren - na uren eindelijk iets op de chip kunnen zetten.
+          Helaas kwam die doorbraak er te laat en moesten we alsnog de handdoek in de ring gooien aan het einde van dit project. 
+        </p>
       </section>
       <section>
         <h2>Wat heb ik geleerd?</h2>
-        <p>Een mesh netwerk opzetten is relatief eenvoudig en kan op grote schaal worden uitgerold.</p>
+        <ul>
+          <li>
+            Goed leren werken met EasyEDA en veel kennis opgedaan over hoe je een elektrisch schema tekent om een eigen PCB te ontwerpen.
+            <br><br>
+          </li>
+          <li>Een PCB met enige complexiteit ontwerpen vereist meer tijd dan je denkt.</li>
+          <br>
+          <li>Maak voor je een PCB bestelt best eerst een testopstelling waar je aan sleutelt tot ze werkt. Eens dat het geval is, kan je deze testopstelling in een 'custom PCB' gieten.
+            Op deze manier is de kans groter dat ook deze PCB effectief werkt.
+          </li>
+          <br>
+          <li>DUBBELCHECK, TRIPELCHECK alle componenten die je op een PCB laat zetten. Kijk alle datasheets goed na. Vermijd verouderde componenten of zaken die niet met elkaar compatibel zijn.</li>
+          <br>
+          <li>Gebruik internetfora of facebookgroepen als je vast zit bij een project. Mensen met expertise zijn vaak enthousiast en bereid om je te helpen indien mogelijk.</li>
+          <br>
+          <li>Luister naar mensen met verstand van zaken wat betreft het vakgebied horende bij het project. Bij dit project vertaalde dit zich concreet in het respecteren van de ultieme einddatum om de PCB te bestellen. 
+            Wij maakten die fout helaas wel en betaalden er uiteindelijk de prijs voor.
+          </li>
+        </ul>
       </section>
     </div>
   </main>
